@@ -37,7 +37,7 @@
     # 是否以json格式进行存储和读取
     $.cookie.json = true;
     
-##### 1.2 方法二
+###### 1.2 方法二
     # 创建cookie
     document.cookie = "username=Bill Gates";
         
@@ -52,3 +52,25 @@
     
     # 删除cookie 直接把 expires 参数设置为过去的日期即可
     document.cookie = "username=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+    
+##### 2 封装cookie的增删改查的函数
+    function setCookie(key, value, iDay) {
+        var oDate = new Date();
+        oDate.setDate(oDate.getDate() + iDay);
+        document.cookie = key + '=' + value + ';expires=' + oDate;
+    }
+    
+    function removeCookie(key) {
+        setCookie(key, '', -1);//这里只需要把Cookie保质期退回一天便可以删除
+    }
+    
+    function getCookie(key) {
+        var cookieArr = document.cookie.split('; ');
+        for(var i = 0; i < cookieArr.length; i++) {
+            var arr = cookieArr[i].split('=');
+            if(arr[0] === key) {
+                return arr[1];
+            }
+        }
+        return false;
+    }
