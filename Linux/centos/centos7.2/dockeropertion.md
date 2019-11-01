@@ -16,5 +16,7 @@
     docker run -p 8080:80 -d --privileged 容器ID init
 ##### 4 将容器保存位镜像
     docker commit 容器ID 镜像名称
-##### 5 将镜像保存位文件
+##### 5 将镜像保存为文件，将文件转化为镜像
     docker save -o 文件名 镜像ID
+    docker load < 文件名
+    
