@@ -20,3 +20,7 @@
     docker save -o 文件名 镜像ID
     docker load < 文件名
     
+##### 6 进入容器和退出
+    docker exec -it 容器ID /bin/bash
+    exit    
+    
